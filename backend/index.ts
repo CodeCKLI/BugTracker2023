@@ -13,6 +13,7 @@ import * as dbDAO from "./DAO/dbDAO.js";
 dotenv.config();
 
 const app: Express = express();
+const port = process.env.PORT;
 
 // CORS
 app.use(cors());
@@ -352,8 +353,6 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Ticketing system by CHUN KAI LI");
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(
-    `[server]: Server is running at ${process.env.HOST}:${process.env.PORT}`
-  );
+app.listen(port, () => {
+  console.log(`[server]: Server is running at ${process.env.HOST}:${port}`);
 });
