@@ -347,6 +347,6 @@ app.get("/", (req: Request, res: Response) => {
 
 app.listen(process.env.PORT, () => {
   console.log(
-    `[server]: Server is running at http://${process.env.HOST}:${process.env.PORT}`
+    `[server]: Server is running at ${process.env.HOST}:${process.env.PORT}`
   );
 });
