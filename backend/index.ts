@@ -13,7 +13,7 @@ import * as dbDAO from "./DAO/dbDAO.js";
 dotenv.config();
 
 const app: Express = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 // CORS
 app.use(cors());
@@ -354,5 +354,5 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.listen(port, () => {
-  console.log(`[server]: Server is running at ${process.env.HOST}:${port}`);
+  console.log(`Started at port: ${port}`);
 });
