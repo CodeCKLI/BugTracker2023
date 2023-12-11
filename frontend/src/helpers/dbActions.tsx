@@ -12,13 +12,13 @@ if (env.VITE_REACT_APP_MDOE == "PROD") {
 }
 
 export const staffNameToID = async (name: string) => {
-  const readStaffid = await fetch(`${HOST}:${PORT}/findStaffByName/${name}`);
+  const readStaffid = await fetch(`${HOST}/findStaffByName/${name}`);
   let data = await readStaffid.json();
   return data[0].id;
 };
 
 export const staffIDToName = async (uStaff_id: number) => {
-  const readStaffid = await fetch(`${HOST}:${PORT}/findstaffbyid/${uStaff_id}`);
+  const readStaffid = await fetch(`${HOST}/findstaffbyid/${uStaff_id}`);
   let data = await readStaffid.json();
   return data[0].staff_name;
 };
@@ -30,7 +30,7 @@ export const userLogin = async (uEmail: string, uPwd: string) => {
   console.log(uPwd);
 
   try {
-    const response = await fetch(`${HOST}:${PORT}/login`, {
+    const response = await fetch(`${HOST}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,7 +53,7 @@ export const userSignin = async (
   sID: number | undefined
 ) => {
   try {
-    const response = await fetch(`${HOST}:${PORT}/register`, {
+    const response = await fetch(`${HOST}/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -72,25 +72,25 @@ export const userSignin = async (
 };
 
 export const getAllOpenTickets = async () => {
-  const response = await fetch(`${HOST}:${PORT}/openticketscount`);
+  const response = await fetch(`${HOST}/openticketscount`);
   let data = await response.json();
   return data[0].open_tickets;
 };
 
 export const getAllClosedTickets = async () => {
-  const response = await fetch(`${HOST}:${PORT}/closedticketscount`);
+  const response = await fetch(`${HOST}/closedticketscount`);
   let data = await response.json();
   return data[0].closed_tickets;
 };
 
 export const getOpenDepartment = async () => {
-  const response = await fetch(`${HOST}:${PORT}/openticketdepartmentcount`);
+  const response = await fetch(`${HOST}/openticketdepartmentcount`);
   let data = await response.json();
   return data[0].open_tickets_department;
 };
 
 export const getOpenStaff = async (staff_id: number) => {
-  const response = await fetch(`${HOST}:${PORT}/openticketforstaff`, {
+  const response = await fetch(`${HOST}/openticketforstaff`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -104,13 +104,13 @@ export const getOpenStaff = async (staff_id: number) => {
 };
 
 export const getAllTickets = async () => {
-  const response = await fetch(`${HOST}:${PORT}/tableticketsall`);
+  const response = await fetch(`${HOST}/tableticketsall`);
   let data = await response.json();
   return data;
 };
 
 export const getAllStaffs = async () => {
-  const response = await fetch(`${HOST}:${PORT}/allstaffs`);
+  const response = await fetch(`${HOST}/allstaffs`);
   let data = await response.json();
   return data;
 };
@@ -120,7 +120,7 @@ export const createStaff = async (
   staffDepartment: string
 ) => {
   try {
-    await fetch(`${HOST}:${PORT}/createStaff`, {
+    await fetch(`${HOST}/createStaff`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -141,7 +141,7 @@ export const editStaff = async (
   staffName: string,
   staffDepartment: string
 ) => {
-  const response = await fetch(`${HOST}:${PORT}/editStaff`, {
+  const response = await fetch(`${HOST}/editStaff`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -155,7 +155,7 @@ export const editStaff = async (
 };
 
 export const delStaff = async (id: number) => {
-  const response = await fetch(`${HOST}:${PORT}/delStaff`, {
+  const response = await fetch(`${HOST}/delStaff`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -172,7 +172,7 @@ export const createTicket = async (
   personid: number | undefined,
   project_id: number
 ) => {
-  await fetch(`${HOST}:${PORT}/createticket`, {
+  await fetch(`${HOST}/createticket`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -195,7 +195,7 @@ export const editTicket = async (
 ) => {
   open ? (open = 1) : (open = 0);
 
-  const response = await fetch(`${HOST}:${PORT}/editTicket`, {
+  const response = await fetch(`${HOST}/editTicket`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -211,7 +211,7 @@ export const editTicket = async (
 };
 
 export const delTicket = async (id: number) => {
-  const response = await fetch(`${HOST}:${PORT}/delticket`, {
+  const response = await fetch(`${HOST}/delticket`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -225,7 +225,7 @@ export const delTicket = async (id: number) => {
 };
 
 export const getAllProjects = async () => {
-  const response = await fetch(`${HOST}:${PORT}/getprojects`);
+  const response = await fetch(`${HOST}/getprojects`);
   let data = await response.json();
   return data;
 };
@@ -234,7 +234,7 @@ export const createProject = async (
   project_name: string,
   project_description: string
 ) => {
-  const result = await fetch(`${HOST}:${PORT}/createproject`, {
+  const result = await fetch(`${HOST}/createproject`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -248,13 +248,13 @@ export const createProject = async (
 };
 
 export const projectNameToID = async (name: string) => {
-  const readStaffid = await fetch(`${HOST}:${PORT}/findProjectByName/${name}`);
+  const readStaffid = await fetch(`${HOST}/findProjectByName/${name}`);
   let data = await readStaffid.json();
   return data[0].id;
 };
 
 export const getCommentsByTicketID = async (tid: number) => {
-  const response = await fetch(`${HOST}:${PORT}/commentsbyticketid/${tid}`);
+  const response = await fetch(`${HOST}/commentsbyticketid/${tid}`);
   let data = await response.json();
   return data;
 };
@@ -264,7 +264,7 @@ export const createCommentToTicket = async (
   ticket_id: number,
   staff_id: number
 ) => {
-  const result = await fetch(`${HOST}:${PORT}/createcommenttoticket`, {
+  const result = await fetch(`${HOST}/createcommenttoticket`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -280,7 +280,7 @@ export const createCommentToTicket = async (
 
 export const getOpenTicketsForStaff = async (sid: number, pid: number) => {
   try {
-    const response = await fetch(`${HOST}:${PORT}/openticketsforstaff`, {
+    const response = await fetch(`${HOST}/openticketsforstaff`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -302,7 +302,7 @@ export const getOpenTicketsForDepartment = async (
   pid: number
 ) => {
   try {
-    const response = await fetch(`${HOST}:${PORT}/openticketsfordepartment`, {
+    const response = await fetch(`${HOST}/openticketsfordepartment`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -320,14 +320,12 @@ export const getOpenTicketsForDepartment = async (
 };
 
 export const getTicketStatus = async (pid: number) => {
-  const response = await fetch(`${HOST}:${PORT}/getticketsofproject/${pid}`);
+  const response = await fetch(`${HOST}/getticketsofproject/${pid}`);
   let data = await response.json();
   return data;
 };
 export const getTicketStatusFromDiffDepartment = async (pid: number) => {
-  const response = await fetch(
-    `${HOST}:${PORT}/getticketsfromdiffdepartment/${pid}`
-  );
+  const response = await fetch(`${HOST}/getticketsfromdiffdepartment/${pid}`);
   let data = await response.json();
   return data;
 };
