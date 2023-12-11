@@ -199,6 +199,7 @@ app.post("/login", async (req, res) => {
 
     // JWT token
     const accessToken = jwt.sign(staffInfo, secretkey);
+    console.log(`accessToken: ${accessToken}`);
 
     res.send({ login: true, info: accessToken });
   } catch (error) {
