@@ -10,11 +10,13 @@
 //   .promise();
 
 import pg from "pg";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const Pool = pg.Pool;
 export const db = new Pool({
-  connectionString:
-    "postgres://ticket_app_f5o4_user:7sSwpZA9J3Ws95MFddHuFNIbDutVWjtl@dpg-clajgrunt67s738ngk30-a.oregon-postgres.render.com/ticket_app_f5o4",
+  connectionString: process.env.DATABASE_STRING,
   ssl: {
     rejectUnauthorized: false,
   },

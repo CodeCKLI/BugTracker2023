@@ -5,8 +5,7 @@ import jwt from "jsonwebtoken";
 import cors from "cors";
 
 // Utils
-import { isObjEmpty } from "./helpers/utils.js";
-import { DeparmentsEnum } from "./helpers/utils.js";
+import { isObjEmpty, DeparmentsEnum } from "./helpers/utils.js";
 
 // DAO layer for database
 import * as dbDAO from "./DAO/dbDAO.js";
@@ -14,7 +13,6 @@ import * as dbDAO from "./DAO/dbDAO.js";
 dotenv.config();
 
 const app: Express = express();
-const port = process.env.PORT;
 
 // CORS
 app.use(cors());
@@ -347,6 +345,8 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Ticketing system by CHUN KAI LI");
 });
 
-app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
+app.listen(process.env.PORT, () => {
+  console.log(
+    `[server]: Server is running at http://${process.env.HOST}:${process.env.PORT}`
+  );
 });
