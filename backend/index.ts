@@ -177,10 +177,15 @@ app.post("/register", async (req, res) => {
 app.post("/login", async (req, res) => {
   const { uEmail, Pwd } = req.body;
 
+  console.log(`uEmail: ${uEmail}`);
+  console.log(`Pwd: ${Pwd}`);
+
   try {
     // Compare password and hashed password in DB
     const matchedUser = await dbDAO.staffLoginPwdmatch(uEmail);
+    console.log(`matchedUser: ${matchedUser}`);
     const passwordMatch = await bcrypt.compare(Pwd, matchedUser.user_password);
+    console.log(`passwordMatch: ${passwordMatch}`);
 
     if (!passwordMatch) {
       res.sendStatus(401);
@@ -189,6 +194,7 @@ app.post("/login", async (req, res) => {
 
     // Retrieve user info with custome SQL query
     const staffInfo = await dbDAO.staffLoginInfo(matchedUser.user_staff_id);
+    console.log(`staffInfo: ${staffInfo}`);
     const secretkey: any = process.env.ACCESS_TOKEN_SECRET;
 
     // JWT token
