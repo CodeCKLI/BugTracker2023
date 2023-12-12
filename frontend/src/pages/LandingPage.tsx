@@ -53,8 +53,6 @@ export const LandingPage = () => {
 
     const result = await userLogin(uEmail, uPwd);
 
-    console.log(result);
-
     if (result.info !== undefined) {
       let hasdedinfo = result.info;
       setCookie("isLogin", true, {

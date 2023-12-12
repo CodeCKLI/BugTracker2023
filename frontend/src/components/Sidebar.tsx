@@ -105,7 +105,7 @@ export const Sidebar = () => {
         ) : null}
         <Box textAlign={"center"} marginTop={2}>
           <Button
-            color="error"
+            color="secondary"
             variant="contained"
             onClick={handleLogout}
             href="/"

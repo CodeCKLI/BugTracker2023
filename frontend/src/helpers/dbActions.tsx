@@ -24,11 +24,6 @@ export const staffIDToName = async (uStaff_id: number) => {
 };
 
 export const userLogin = async (uEmail: string, uPwd: string) => {
-  console.log(HOST);
-  console.log(PORT);
-  console.log(uEmail);
-  console.log(uPwd);
-
   try {
     const response = await fetch(`${HOST}/login`, {
       method: "POST",

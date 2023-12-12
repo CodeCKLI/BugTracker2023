@@ -86,7 +86,7 @@ export const TicketForm = () => {
       if (person !== "") {
         const staff_id = await staffNameToID(person);
         const project_id = await projectNameToID(project);
-        console.log(title, what, staff_id, project_id);
+
         await createTicket(title, what, staff_id, project_id);
         navigate("/main/tickets", {
           state: { formMsg: `Ticket title: ${title} has been created` },
@@ -130,7 +130,6 @@ export const TicketForm = () => {
     const result = await delTicket(selectedData.id);
 
     if (!result.isdeleted) {
-      console.log(result.msg.detail);
       navigate("/main/tickets", {
         state: {
           formMsg: `Error: ${selectedData.id} ${result.msg.detail}`,

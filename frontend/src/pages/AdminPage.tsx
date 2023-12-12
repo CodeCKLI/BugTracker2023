@@ -27,7 +27,6 @@ export const AdminPage = () => {
 
   const handleSearchInput = (e: any) => {
     setSearchInput(e.target.value);
-    console.log(staffs);
 
     const filteredStaffs = staffs.filter((staff: any) => {
       return (
@@ -36,8 +35,6 @@ export const AdminPage = () => {
         staff.staff_name.toLowerCase().includes(e.target.value)
       );
     });
-
-    console.log(filteredStaffs);
 
     setFilteredStaffs(filteredStaffs);
   };
