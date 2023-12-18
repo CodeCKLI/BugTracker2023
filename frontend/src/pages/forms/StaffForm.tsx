@@ -9,6 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
+import { Link } from "react-router-dom";
 
 // React router
 import { useLocation } from "react-router-dom";
@@ -140,9 +141,13 @@ export const StaffForm = () => {
             <Button variant="contained" onClick={handleStaffBTN}>
               submit
             </Button>
-            <Button href="/main/admin" variant="contained">
-              Cancel
-            </Button>
+
+            <Link style={{ textDecoration: "none" }} to={"/main/admin"}>
+              <Button color="primary" variant="contained">
+                Cancel
+              </Button>
+            </Link>
+
             {isEdit ? (
               <Button
                 onClick={handleDelBTN}

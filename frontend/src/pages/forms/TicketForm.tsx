@@ -11,6 +11,7 @@ import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import Stack from "@mui/material/Stack";
 import Alert from "@mui/material/Alert";
+import { Link } from "react-router-dom";
 
 // React router
 import { useLocation } from "react-router-dom";
@@ -264,14 +265,12 @@ export const TicketForm = () => {
           >
             submit
           </Button>
-          <Button
-            href="/main/tickets"
-            variant="contained"
-            color="primary"
-            sx={{ m: 1 }}
-          >
-            Cancel
-          </Button>
+
+          <Link style={{ textDecoration: "none" }} to={"/main/tickets"}>
+            <Button variant="contained" color="primary" sx={{ m: 1 }}>
+              Cancel
+            </Button>
+          </Link>
 
           {isEdit ? (
             <Button
